@@ -57,3 +57,28 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+/* added for corporate network */
+document.querySelectorAll('.box').forEach(box => {
+    box.addEventListener('click', () => {
+        // Remove the 'clicked' class from all boxes
+        document.querySelectorAll('.box').forEach(b => b.classList.remove('clicked'));
+        // Add the 'clicked' class to the clicked box
+        box.classList.add('clicked');
+    });
+});
+/* */ 
+
+/* added for dynamic main page */
+// 이전 페이지 인덱스 가져오기
+const lastPageIndex = parseInt(localStorage.getItem("lastPageIndex"), 10) || 0;
+
+// 다음 페이지 인덱스 계산
+const nextPageIndex = (lastPageIndex + 1) % pages.length;
+
+// 다음 페이지 렌더링
+document.getElementById('app').innerHTML = pages[nextPageIndex];
+
+// 현재 인덱스 저장
+localStorage.setItem("lastPageIndex", nextPageIndex);
+/**/
